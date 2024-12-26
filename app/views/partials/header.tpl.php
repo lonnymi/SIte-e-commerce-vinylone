@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
-<?php
-    $baseRoute = $_SERVER['BASE_URI'] ?? '/';
-?>
+
+<link rel="stylesheet" href="/final_mvc/public/assets/css/styles.css">
 <head>
     <meta charset="UTF-8">
     <title>Vinyl Collector</title>
-    <link rel="stylesheet" href="/final_mvc/public/assets/css/styles.css">
-
 </head>
-
 <body>
     <header class="site-header">
         <div class="container">
