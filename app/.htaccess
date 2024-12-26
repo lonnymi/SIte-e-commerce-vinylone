@@ -1,1 +1,3 @@
-Deny From All
+RewriteCond %{REQUEST_FILENAME} !-lf
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ index.php [QSA,L]
