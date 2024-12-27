@@ -1,4 +1,8 @@
 RewriteEngine On
+
+# Ne pas réécrire les fichiers existants (CSS, JS, images, etc.)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Réécrire tout le reste vers index.php
+RewriteRule ^ index.php [QSA,L]

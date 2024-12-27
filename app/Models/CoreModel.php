@@ -2,69 +2,97 @@
 
 namespace App\Models;
 
-// Modele de base : c'est la classe mère dont vont hériter TOUS les models
-// Cette classe n'est pas destinée à être instancié, mais seulement à être héritée
-class CoreModel
+/**
+ * CoreModel est une classe de base destinée à être étendue par tous les autres modèles.
+ * Elle contient les propriétés et méthodes communes à tous les modèles.
+ */
+abstract class CoreModel
 {
-    // Ici on veut éviter de répéter les propriétés présentes dans tous les Models
-    // On factorise dans la classe "parent" de tous les Models => donc ici meme CoreModel
-    // Les propriétés doivent être en protected car on veut pouvoir les utiliser dans les classe enfant (avant ça, elles etaient en private)
-
+    // Propriétés communes à tous les modèles
     protected $id;
     protected $created_at;
     protected $updated_at;
 
     /**
-     * Get the value of id
-     */ 
+     * Récupère l'identifiant unique.
+     *
+     * @return int|null
+     */
     public function getId()
     {
         return $this->id;
     }
 
     /**
-     * Set the value of id
+     * Définit l'identifiant unique.
      *
-     * @return  self
-     */ 
+     * @param int $id
+     * @return self
+     */
     public function setId($id)
     {
         $this->id = $id;
+        return $this;
     }
 
     /**
-     * Get the value of updated_at
-     */ 
-    public function getUpdated_at()
-    {
-        return $this->updated_at;
-    }
-
-    /**
-     * Set the value of updated_at
+     * Récupère la date de création.
      *
-     * @return  self
-     */ 
-    public function setUpdated_at($updated_at)
-    {
-        $this->updated_at = $updated_at;
-    }
-
-    /**
-     * Get the value of created_at
-     */ 
-    public function getCreated_at()
+     * @return string|null
+     */
+    public function getCreatedAt()
     {
         return $this->created_at;
     }
 
     /**
-     * Set the value of created_at
+     * Définit la date de création.
      *
-     * @return  self
-     */ 
-    public function setCreated_at($created_at)
+     * @param string $created_at
+     * @return self
+     */
+    public function setCreatedAt($created_at)
     {
         $this->created_at = $created_at;
+        return $this;
     }
+
+    /**
+     * Récupère la date de dernière mise à jour.
+     *
+     * @return string|null
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updated_at;
+    }
+
+    /**
+     * Définit la date de dernière mise à jour.
+     *
+     * @param string $updated_at
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->updated_at = $updated_at;
+        return $this;
+    }
+
+    /**
+     * Méthode abstraite pour récupérer le nom de la table associée au modèle.
+     * Chaque modèle enfant doit implémenter cette méthode.
+     *
+     * @return string
+     */
+    abstract public static function getTableName(): string;
+
+    /**
+     * Méthode abstraite pour hydrater les données depuis la base.
+     * Chaque modèle enfant doit implémenter cette méthode.
+     *
+     * @param array $data
+     * @return self
+     */
+    abstract public static function hydrate(array $data): self;
 }

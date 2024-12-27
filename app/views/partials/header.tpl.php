@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<link rel="stylesheet" href="/final_mvc/public/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles.css">
+
+
 <head>
     <meta charset="UTF-8">
     <title>Vinyl Collector</title>
